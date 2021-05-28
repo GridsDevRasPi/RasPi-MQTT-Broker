@@ -1,5 +1,5 @@
 # RasPi-MQTT-Broker
-RaspberryPi 4B + MQTT 
+RaspberryPi4 B install MQTT 
 
 **ติดตั้ง**
 ~~~
