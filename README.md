@@ -6,7 +6,9 @@ RaspberryPi4 B install MQTT
 **ติดตั้ง**
 ~~~
 $ sudo apt update
+
 $ sudo apt full-upgrade
+
 $ sudo apt install mosquitto mosquitto-clients
 ~~~
 
