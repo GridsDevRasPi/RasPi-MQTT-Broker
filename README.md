@@ -83,9 +83,11 @@ $ mosquitto_pub -h raspberrypi -t "test/message" -m "Hello from remote"
 
 **ทดสอบ Subscribe และ Publish จาก Windows to RaspberryPi**
 
-update 9 Jun 2021
-
 **ผลลัพธ์**
 ~~~
 Hello from remote
 ~~~
+
+**NOTE** : สามารถดูตัวอย่างการใช้งานที่ผมเคยทำไว้แล้วได้ **[[ที่นี่](https://www.youtube.com/watch?v=we_bRC2Z_-I&t=71s)]**
+
+update 9 Jun 2021
