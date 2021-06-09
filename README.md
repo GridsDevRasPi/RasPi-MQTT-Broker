@@ -89,7 +89,7 @@ $ mosquitto_sub -h 192.168.1.17 -t "test/message"
 $ mosquitto_pub -h raspberrypi -t "test/message" -m "Hello from remote"
 ~~~
 
-**ทดสอบ Subscribe และ Publish จาก Windows to RaspberryPi**
+**ทดสอบ subscript & publish จาก Windows ไปที่ RaspberryPi บนเครือข่ายเดียวกัน**
 
 ใน Raspberry Pi ผม run service ด้วยคำสั่ง
 
