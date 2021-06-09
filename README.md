@@ -43,6 +43,8 @@ update 28 May 2021
 
 สำหรับ Windows สามารถ Download โปรแกรมจากเว็บ [mosquitto.org](https://mosquitto.org/download/)
 
+**Tip** : คุณสามารถดูวิธีการติดตั้ง MQTT Server ได้จาก **[[ที่นี่](https://www.youtube.com/watch?v=tzAVwksEEfY)]**
+
 **Identify Raspberry Pi บน Network (บน Raspberry Pi)**
 
 ไคลเอ็นต์ MQTT จำเป็นที่จะต้องทราบว่ามันอยู่ในเครือข่ายใด ไคลเอ็นต์ MQTT ต้องมีชื่อโฮสต์หรือที่อยู่ IP ทุกครั้งที่คุณ sup หรือ pub ข้อความ
