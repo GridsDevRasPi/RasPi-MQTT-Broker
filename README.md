@@ -20,6 +20,10 @@ $ sudo systemctl enable mosquitto
 $ sudo systemctl status mosquitto
 ~~~
 
+**ทดสอบ subscript & publish ภายในตัว Raspberry Pi**
+
+คำสั่ง subscript & publish
+
 **subscript**
 ~~~
 $ mosquitto_sub -h localhost -t "mqtt/pimylifeup"
@@ -63,7 +67,7 @@ $ hostname
 $ ifconfig | grep inet | grep cast
 ~~~
 
-การ Subscribe to the Topic จากระยะไกล
+**การ Subscribe to the Topic จากระยะไกล**
 
 ~~~
 $ mosquitto_sub -h raspberrypi -t "test/message"
@@ -72,10 +76,12 @@ $ mosquitto_sub -h raspberrypi -t "test/message"
 หรือ
 
 ~~~
-$ mosquitto_sub -h 192.168.0.25 -t "test/message"
+$ mosquitto_sub -h 192.168.1.17 -t "test/message" 
 ~~~
 
-การ Publish ข้อความทดสอบจากระยะไกล
+**NOTE** : 192.168.1.17 เป็น IP ที่ใช้ในครั้งนี้เท่านั้น ถ้าต้องการ fix ip ก็ทำได้ แต่ในกรณีผมไม่ได้ fix
+
+**การ Publish ข้อความทดสอบจากระยะไกล**
 
 ~~~
 $ mosquitto_pub -h raspberrypi -t "test/message" -m "Hello from remote"
@@ -83,7 +89,37 @@ $ mosquitto_pub -h raspberrypi -t "test/message" -m "Hello from remote"
 
 **ทดสอบ Subscribe และ Publish จาก Windows to RaspberryPi**
 
-**ผลลัพธ์**
+ใน Raspberry Pi ผม run service ด้วยคำสั่ง
+
+~~~
+$ sudo systemctl status mosquitto
+~~~
+
+จากนั้น ผมกำหนดให้ raspberry Subscribe topic ที่มีชื่อว่า test/message และรอรับข้อความ Publish
+
+~~~
+$ mosquitto_sub -h 192.168.1.17 -t "test/message"
+~~~
+
+ใน Windows เปิด cmd โดย Run as Administrator 
+
+~~~
+$ cd\
+
+$ cd "Program Files"/mosquitto
+
+$ net start mosquitto
+~~~
+
+**Tip** : ในกรณีที่ run service ไว้แล้วไม่ต้อง run ใหม่นะครับ
+
+จากนั้นผมจะทำการ Publish ข้อความ "Hello from remote" ไปที่ topic "test/message"
+
+~~~
+$ mosquitto_pub -h 192.168.1.17 -t "test/message" -m "Hello from remote"
+~~~
+
+**ผลลัพธ์จะปรากฎขึ้นที่ Raspberry Pi ดังนี้**
 ~~~
 Hello from remote
 ~~~
@@ -91,3 +127,4 @@ Hello from remote
 **NOTE** : สามารถดูตัวอย่างการใช้งานที่ผมเคยทำไว้แล้วได้ **[[ที่นี่](https://www.youtube.com/watch?v=we_bRC2Z_-I&t=71s)]**
 
 update 9 Jun 2021
+
