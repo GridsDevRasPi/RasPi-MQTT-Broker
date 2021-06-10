@@ -130,3 +130,54 @@ Hello from remote
 
 update 9 Jun 2021
 
+**ทดสอบ subscript & publish NodeMCU จาก Windows และ RaspberryPi บนเครือข่ายเดียวกัน**
+
+ผมใช้ตัวอย่างการทำสอบ nodemcu-esp8266-ConnMQTT ดูเพิ่มเติมได้ **[ที่นี่](https://github.com/GridsNodeMCU/nodemcu-esp8266-ConnMQTT)**
+
+- กำหนดค่า SSID/PASSWORD WiFi ในส่วนของการเชื่อมต่อ WiFi 
+- กำหนดค่า mqtt_server ไปที่ IP ของ Raspberry Pi
+- แก้ไข topic ใน void setup() จาก esp/test เป็น "test/message"
+- แก้ไข topic ใน void loop()จาก esp/test1 เป็น "test/message1"
+- จากนั้น upload ลง ESP8266
+
+กลับไปที่ Raspberry Pi ทำการ subscript topic ชื่อ "test/message1"
+
+~~~
+$ mosquitto_sub -h 192.168.1.17 -t "test/message1"
+~~~
+
+ทำแบบเดียวกันใน Windows
+
+**Chack Point** : ถ้าถูกต้องที่หน้าจอ subscript ของ Windows และ Raspberry Pi จะต้องปรากฎข้อความที่ส่งมาจาก ESP8266 (เมื่อมีการกด Switch ที่ ESP8266)
+
+ต่อไปผมจะ publish topic ชื่อ "test/message" และ ส่งข้อความ on จาก Raspberry Pi และ Windows
+
+~~~
+$ mosquitto_pub -h 192.168.1.17 -t "test/message" -m "on"
+~~~
+
+**ผลลัพธ์**
+- ที่ ESP8266 สถานะไฟ LED **ติด** ไฟบอร์ดของ ESP8266 **ดับ**
+- ที่ Raspberry Pi และ Windows หน้าต่าง subscript "test/message" ปรากฎข้อความ "on"
+
+ต่อไปผมจะ publish topic ชื่อ "test/message" และ ส่งข้อความ off จาก Raspberry Pi และ Windows
+
+~~~
+$ mosquitto_pub -h 192.168.1.17 -t "test/message" -m "off"
+~~~
+
+**ผลลัพธ์**
+- ที่ ESP8266 สถานะไฟ LED **ดับ** ไฟบอร์ดของ ESP8266 **ติด**
+- ที่ Raspberry Pi และ Windows หน้าต่าง subscript "test/message" ปรากฎข้อความ "on"
+
+update 10 Jun 2021
+
+**ทดสอบ subscript & publish แบบ Online**
+
+
+
+
+
+
+
+
